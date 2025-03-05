@@ -12,7 +12,7 @@ Class Department extends Database
      */
     function getAll(): array|false
     {
-        return $this->executeSelect("SELECT nDepartmentID AS department_ID, cName AS 'name' FROM department ORDER BY cName");
+        return $this->executeSelect("SELECT nDepartmentID AS department_ID, cName AS name FROM department ORDER BY cName");
     }
     
     /**
@@ -35,7 +35,7 @@ Class Department extends Database
      */
     function search(string $searchText): array|false
     {
-        return $this->executeSelect("SELECT * FROM department WHERE cName LIKE ? ORDER BY cName", ["%$searchText%"]);
+        return $this->executeSelect("SELECT nDepartmentID AS department_ID, cName AS name FROM department WHERE cName LIKE ? ORDER BY cName", ["%$searchText%"]);
     }
 
     /**
