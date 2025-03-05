@@ -37,7 +37,7 @@ include_once ROOT_PATH . '/public/nav.php';
                     <button type="submit">Search</button>
                 </div>
             </form>
-            <a href="<?=BASE_URL . '/views/employee/add.php' ?>">Add employee</a>
+            <a href="<?=BASE_URL . '/views/department/add.php' ?>">Add department</a>
             <section>
                 <?php foreach($departments as $department): ?>
                     <article>

@@ -40,4 +40,23 @@ Class Database extends DBCredentials
             return false;
         }
     }
+    
+    /**
+     * Execute INSERT SQL query in the db
+     * @param string $sql SQL query
+     * @param array $params Query parameter
+     * @return bool true if succes
+     *          Or false if error
+     */
+     protected function executeInsert(string $sql, array $params = []): bool {
+        try{
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute($params);
+
+            return $stmt->rowCount() === 1;
+        } catch(PDOException $e){
+            Logger::logText('Error getting data', $e);
+            return false;
+        }
+    }
 }

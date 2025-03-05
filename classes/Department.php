@@ -37,4 +37,40 @@ Class Department extends Database
     {
         return $this->executeSelect("SELECT * FROM department WHERE cName LIKE ? ORDER BY cName", ["%$searchText%"]);
     }
+
+    /**
+     * Validates form from insert department
+     * @param array $department The department to insert
+     * @return array with error messages inside if error
+     *          or empty if there is no errors
+     */
+    function validate(array $department): array
+    {
+
+        $name = trim($department['name']) ?? '';
+        $validationErrors = [];
+        
+        if($name === '') {
+            $validationErrors[] = 'Department name is mandatory';
+        }
+        if(strlen($name) > 64) {
+            $validationErrors[] = 'Department name is too long - Maks 64 characters';
+        }
+        
+    
+        return $validationErrors;
+    }
+
+
+    /**
+     * Inserts department into the db
+     * @param array $department - The department to insert
+     * @return boolean - true if success, false if error
+     */
+    function insert(array $department): bool
+    {
+        $name = htmlspecialchars(trim($department['name']));
+
+        return $this->executeInsert("INSERT INTO department (cName) VALUES (?)", [$name]);
+    }
 }
