@@ -21,4 +21,23 @@ Class Database extends DBCredentials
     {
         $this->pdo = null;
     }
+
+     /**
+     * Execute SELECT SQL query in the db
+     * @param string $sql SQL query
+     * @param array $params Query parameter
+     * @return array of selected data
+     *          Or false if error
+     */
+     protected function executeSelect(string $sql, array $params = []): array|false {
+        try{
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute($params);
+
+            return $stmt->fetchAll();
+        } catch(PDOException $e){
+            Logger::logText('Error getting data', $e);
+            return false;
+        }
+    }
 }
