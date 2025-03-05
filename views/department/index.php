@@ -41,8 +41,8 @@ include_once ROOT_PATH . '/public/nav.php';
             <section>
                 <?php foreach($departments as $department): ?>
                     <article>
-                        <p><strong>Name: </strong><?=$department['cName']?></p>
-                        <p><a href=<?=BASE_URL . "/views/employee/view.php?id={$department['nDepartmentID']}"?>>View details</a></p>
+                        <p><strong>Name: </strong><?=$department['name']?></p>
+                        <p><a href=<?=BASE_URL . "/views/department/view.php?id={$department['department_ID']}"?>>View details</a></p>
                     </article>
                 <?php endforeach; ?>
             </section>

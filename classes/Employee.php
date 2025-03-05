@@ -77,8 +77,7 @@ Class Employee extends Database
     
     /**
      * It retrieves employee from the db based
-     * on a text seach on the first and last name
-     * @param $pdo A PDO database connnection
+     * on an ID
      * @param $searchText The text to search for
      * @return An associative array
      *         Or false is there was an error
@@ -119,6 +118,18 @@ Class Employee extends Database
             echo "A serious system error occurred: " . $e->getMessage();
             return false;
         }
+    }
+
+    /**
+     * Retrieves employees from the db based
+     * on a department ID
+     * @param $departmentID The department which employees should be from
+     * @return array of employees
+     *         Or false is there was an error
+     */
+    function getAllByDepartment(int $departmentID): array|false
+    {
+        return $this->executeSelect("SELECT cFirstName AS first_name, cLastName AS last_name, nEmployeeID as employee_ID FROM employee WHERE nDepartmentID = ?", [$departmentID]);
     }
     
     /**
