@@ -92,7 +92,8 @@ Class Employee extends Database
                 employee.cEmail AS email, 
                 employee.dBirth AS birth_date, 
                 employee.nDepartmentID AS department_id, 
-                department.cName AS department_name
+                department.cName AS department_name,
+                department.nDepartmentID AS department_ID
             FROM employee INNER JOIN department
                 ON employee.nDepartmentID = department.nDepartmentID
             WHERE nEmployeeID = :employeeID;
