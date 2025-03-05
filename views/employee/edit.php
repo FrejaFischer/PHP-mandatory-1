@@ -73,24 +73,17 @@ if($postRequest){
 $pageTitle = 'Edit employee';
 include_once ROOT_PATH . '/public/header.php';
 ?>
-<nav>
-    <ul>
-        <li><a href=<?= BASE_URL . "/views/employee/view.php?id=$employeeID"?>>Back</a></li>
-    </ul>
-</nav>
 <main>
-<?php if(isset($errorMessage)):?>
+    <a href=<?= BASE_URL . "/views/employee/view.php?id=$employeeID"?>>Back</a>
+    <?php if(isset($errorMessage)):?>
             <section>
                 <p class="error"><?=$errorMessage?></p>
             </section>
-    <?php endif; ?>
-
-    <?php if($postRequest && empty($errorMessage)):?>
+    <?php elseif($postRequest && empty($errorMessage)):?>
                 <section>
                     <p>Employee updated succesfully!</p>
                 </section>
-    <?php endif; ?>
-
+    <?php else: ?>
     <form action="edit.php?id=<?=$employeeID?>" method="POST">
         <div>
             <label for="txtFirstName">First Name</label>
@@ -120,6 +113,7 @@ include_once ROOT_PATH . '/public/header.php';
             <button type="submit">Update employee</button>
         </div>
     </form>
+    <?php endif; ?>
 </main>
 
 <?php include_once ROOT_PATH . '/public/footer.php'; ?>

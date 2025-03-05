@@ -39,17 +39,13 @@ if($postRequest){
 $pageTitle = 'Delete employee';
 include_once ROOT_PATH . '/public/header.php';
 ?>
-<nav>
-    <ul>
-        <li><a href="view.php?id=<?=$employeeID?>">Back</a></li>
-    </ul>
-</nav>
 <main>
+    <a href="view.php?id=<?=$employeeID?>">Back</a>
     <?php if (isset($errorMessage)): ?>
         <section>
             <p class="error"><?=$errorMessage?></p>
         </section>
-    <?php endif; ?>
+    <?php else: ?>
         <p><strong>First name: </strong><?=$employeeToDelete['first_name'] ?></p>
         <p><strong>Last name: </strong><?=$employeeToDelete['last_name'] ?></p>
         <p><strong>Email: </strong><?=$employeeToDelete['email'] ?></p>
@@ -62,6 +58,7 @@ include_once ROOT_PATH . '/public/header.php';
             </div>
             <button type="submit">Delete permenently</button>
         </form>
+    <?php endif; ?>
 </main>
 
 <?php include_once ROOT_PATH . '/public/footer.php'; ?>

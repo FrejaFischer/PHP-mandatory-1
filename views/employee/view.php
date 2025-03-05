@@ -20,15 +20,11 @@ if(!$employee) {
     $employee = $employee[0];
 }
 
-$pageTitle = 'View employee';
+$pageTitle = 'Employee';
 include_once ROOT_PATH . '/public/header.php';
 ?>
-<nav>
-    <ul>
-        <li><a href="<?=BASE_URL . '/views/employee'?>">Back</a></li>
-    </ul>
-</nav>
 <main>
+    <a href="<?=BASE_URL . '/views/employee'?>">Back</a>
     <?php if (isset($errorMessage)): ?>
         <section>
             <p class="error"><?=$errorMessage?></p>

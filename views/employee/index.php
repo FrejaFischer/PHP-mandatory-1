@@ -22,11 +22,6 @@ $pageTitle = 'Employees';
 include_once ROOT_PATH . '/public/header.php';
 include_once ROOT_PATH . '/public/nav.php';
 ?>
-    <nav>
-        <ul>
-            <li><a href="<?=BASE_URL . '/views/employee/add.php' ?>">Add employee</a></li>
-        </ul>
-    </nav>
     <main>
         <?php if(isset($errorMessage)):?>
             <section>
@@ -42,6 +37,7 @@ include_once ROOT_PATH . '/public/nav.php';
                     <button type="submit">Search</button>
                 </div>
             </form>
+            <a href="<?=BASE_URL . '/views/employee/add.php' ?>">Add employee</a>
             <section>
                 <?php foreach($employees as $employee): ?>
                     <article>
