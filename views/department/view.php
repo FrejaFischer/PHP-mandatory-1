@@ -37,11 +37,15 @@ include_once ROOT_PATH . '/public/header.php';
     <?php else: ?>
         <p><strong>Name: </strong><?=$department['department_name'] ?></p>
         <h2>Employees</h2>
-        <ul>
-            <?php foreach ($employees as $employee):?>
-                <li><a href=<?= BASE_URL . "/views/employee/view.php?id={$employee['employee_ID']}"?>><?=$employee['last_name'] . ', ' .$employee['first_name']?></a></li>
-            <?php endforeach;?>
-        </ul>
+        <?php if($employees):?>
+            <ul>
+                <?php foreach ($employees as $employee):?>
+                    <li><a href=<?= BASE_URL . "/views/employee/view.php?id={$employee['employee_ID']}"?>><?=$employee['last_name'] . ', ' .$employee['first_name']?></a></li>
+                <?php endforeach;?>
+            </ul>
+        <?php else:?>
+            <p>No employees connected to this department</p>
+        <?php endif;?>
         <p><a href=<?= BASE_URL . "/views/employee/edit.php?id=$departmentID"?>>Edit department</a></p>
         <p><a href=<?= BASE_URL . "/views/employee/delete.php?id=$departmentID"?>>Delete department</a></p>
     <?php endif; ?>
