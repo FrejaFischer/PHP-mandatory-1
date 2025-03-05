@@ -3,13 +3,10 @@ require_once '../../initialise.php';
 require_once ROOT_PATH . '/classes/Employee.php';
 require_once ROOT_PATH . '/classes/Department.php';
 
-$validationFailure = false;
-$firstName = '';
-$lastName = '';
-$email = '';
-$birth = '';
-$chosenDepartment = '';
+$validationFailure = false; // For checking if there is validation failure
+$chosenDepartment = ''; // For storing chosen department after validation error
 
+// Get all departments
 $department = new Department();
 $allDepartments = $department->getAll();
 
@@ -21,14 +18,14 @@ $postRequest = $_SERVER['REQUEST_METHOD'] === 'POST';
 if($postRequest){
     $employee = new Employee();
 
-    // Input data to ensure inputs value stays if error
+    // Saving values from form to ensure inputs value stays if error accures
     $firstName = htmlspecialchars($_POST['firstName']) ?? '';
     $lastName = htmlspecialchars($_POST['lastName']) ?? '';
     $email = htmlspecialchars($_POST['email']) ?? '';
     $birth = htmlspecialchars($_POST['birth']) ?? '';
     $chosenDepartment = htmlspecialchars($_POST['department']) ?? '';
 
-    $validationErrors = $employee->validate($_POST);
+    $validationErrors = $employee->validate($_POST); // Validating form
 
     if(!empty($validationErrors)) {
         $validationFailure = true;
@@ -43,12 +40,8 @@ if($postRequest){
 $pageTitle = 'Add Employee';
 include_once ROOT_PATH . '/public/header.php';
 ?>
-<nav>
-    <ul>
-        <li><a href="<?=BASE_URL . '/views/employee'?>">Back</a></li>
-    </ul>
-</nav>
 <main>
+    <a href="<?=BASE_URL . '/views/employee'?>">Back</a>
     <?php if(isset($errorMessage)):?>
             <section>
                 <p class="error"><?=$errorMessage?></p>
