@@ -40,7 +40,7 @@ if($postRequest){
     }
 }
 
-$pageTitle = 'Add employee';
+$pageTitle = 'Add Employee';
 include_once ROOT_PATH . '/public/header.php';
 ?>
 <nav>

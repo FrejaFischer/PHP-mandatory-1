@@ -69,8 +69,7 @@ if($postRequest){
 }
 
 
-
-$pageTitle = 'Edit employee';
+$pageTitle = 'Edit Employee';
 include_once ROOT_PATH . '/public/header.php';
 ?>
 <main>

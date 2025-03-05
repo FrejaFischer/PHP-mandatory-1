@@ -36,7 +36,7 @@ if($postRequest){
     }
 }
 
-$pageTitle = 'Delete employee';
+$pageTitle = 'Delete Employee';
 include_once ROOT_PATH . '/public/header.php';
 ?>
 <main>
