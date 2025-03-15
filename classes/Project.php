@@ -16,14 +16,27 @@ Class Project extends Database
     }
     
     /**
-     * It gets one departments from an ID from the db
-     * @param int department ID to select
-     * @return array of departments
+     * It gets one project from an ID from the db
+     * @param int project ID to select
+     * @return array of project
      *          Or false if error
      */
     function getByID(int $projectID): array|false
     {
         return $this->executeSelect("SELECT cName AS project_name FROM project WHERE nProjectID = ?", [$projectID]);
+    }
+ 
+    /**
+     * It gets all projects connected to employee by ID from the db
+     * @param int employee ID to find their projects
+     * @return array of projects
+     *          Or false if error
+     */
+    function getAllByEmployeeID(int $employeeID): array|false
+    {
+        return $this->executeSelect("SELECT project.nProjectID AS project_id, project.cName AS name FROM `project`
+                                    INNER JOIN emp_proy ON emp_proy.nProjectID  = project.nProjectID
+                                    WHERE emp_proy.nEmployeeID = ?", [$employeeID]);
     }
 
     /**
@@ -87,13 +100,13 @@ Class Project extends Database
     //     return $this->executeQuery("UPDATE `department` SET `cName`=(?) WHERE nDepartmentID = (?)", [$name, $departmentID]);    
     // }
     
-    // /**
-    //  * It deletes a department in the db
-    //  * @param $departmentID The department to delete id
-    //  * @return boolean, true if success, false if error
-    //  */
-    // function delete(int $departmentID): bool
-    // {
-    //     return $this->executeQuery("DELETE FROM `department` WHERE nDepartmentID = (?)", [$departmentID]);    
-    // }
+    /**
+     * It deletes a project in the db
+     * @param $projectID The project to delete id
+     * @return boolean, true if success, false if error
+     */
+    function delete(int $projectID): bool
+    {
+        return $this->executeQuery("DELETE FROM `project` WHERE nProjectID = (?)", [$projectID]);    
+    }
 }

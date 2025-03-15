@@ -10,15 +10,20 @@ if($employeeID === 0){
 }
 
 require_once ROOT_PATH . '/classes/Employee.php';
+require_once ROOT_PATH . '/classes/Project.php';
 
 $employee = new Employee();
 $employee = $employee->getByID($employeeID);
 
 if(!$employee) {
-    $errorMessage = 'There was an error';
+    $errorMessage = 'No employee found';
 } else {
     $employee = $employee[0];
 }
+
+$project = new Project();
+$projects = $project->getAllByEmployeeID($employeeID);
+
 
 $pageTitle = 'Employee';
 include_once ROOT_PATH . '/public/header.php';
@@ -35,6 +40,16 @@ include_once ROOT_PATH . '/public/header.php';
         <p><strong>Email: </strong><?=$employee['email'] ?></p>
         <p><strong>Birth date: </strong><?=$employee['birth_date'] ?></p>
         <p><strong>Department: </strong><a href=<?= BASE_URL . "/views/department/view.php?id={$employee['department_ID']}"?>><?=$employee['department_name'] ?></a></p>
+        <p><strong>Projects: </strong></p>
+        <?php if(count($projects) < 1):?>
+            <p>Employee is not connected to any projects</p>
+        <?php else:?>
+            <ul>
+                <?php foreach($projects as $project):?>
+                    <li><a href=<?= BASE_URL . "/views/project/view.php?id={$project['project_id']}"?>> <?=$project['name']?> </a></li>
+                <?php endforeach;?>
+            </ul>
+        <?php endif;?>
         <p><a href=<?= BASE_URL . "/views/employee/edit.php?id=$employeeID"?>>Edit employee</a></p>
         <p><a href=<?= BASE_URL . "/views/employee/delete.php?id=$employeeID"?>>Delete employee</a></p>
     <?php endif; ?>
