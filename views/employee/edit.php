@@ -104,7 +104,7 @@ include_once ROOT_PATH . '/public/header.php';
             <label for="department">Department</label>
             <select name="department" id="department">
                 <?php foreach($allDepartments as $dept):?>
-                    <option value="<?=$dept['nDepartmentID']?>"  <?= ($dept['nDepartmentID'] == $chosenDepartment) ? 'selected' : '' ?> > <?=$dept['cName']?></option>
+                    <option value="<?=$dept['department_ID']?>"  <?= ($dept['department_ID'] == $chosenDepartment) ? 'selected' : '' ?> > <?=$dept['name']?></option>
                 <?php endforeach?>
             </select>
         </div>
