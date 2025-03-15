@@ -43,7 +43,7 @@ include_once ROOT_PATH . '/public/header.php';
     <form action="add.php" method="POST">
         <div>
             <label for="txtName">Department Name</label>
-            <input type="text" id="txtName" name="name" maxlength="64" value="<?= isset($errorMessage) ? $departmentName : '' ?>">
+            <input type="text" id="txtName" name="name" maxlength="64" value="<?= isset($errorMessage) ? $departmentName : '' ?>" required >
         </div>
         <div>
             <button type="submit">Add department</button>
