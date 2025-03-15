@@ -134,6 +134,20 @@ Class Employee extends Database
     }
     
     /**
+     * Retrieves employees from the db based
+     * on a department ID
+     * @param $departmentID The department which employees should be from
+     * @return array of employees
+     *         Or false is there was an error
+     */
+    function getAllByProject(int $projectID): array|false
+    {
+        return $this->executeSelect("SELECT employee.cFirstName AS first_name, employee.cLastName AS last_name, employee.nEmployeeID as employee_ID FROM employee
+                                    INNER JOIN emp_proy ON emp_proy.nEmployeeID  = employee.nEmployeeID
+                                    WHERE emp_proy.nProjectID = ?", [$projectID]);
+    }
+    
+    /**
      * It inserts an employee into the db
      * @param $pdo A PDO database connnection
      * @param $employee The employee to insert

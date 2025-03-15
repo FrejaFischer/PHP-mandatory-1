@@ -15,16 +15,16 @@ Class Project extends Database
         return $this->executeSelect("SELECT nProjectID AS project_ID, cName AS name FROM project ORDER BY cName");
     }
     
-    // /**
-    //  * It gets one departments from an ID from the db
-    //  * @param int department ID to select
-    //  * @return array of departments
-    //  *          Or false if error
-    //  */
-    // function getByID(int $departmentID): array|false
-    // {
-    //     return $this->executeSelect("SELECT cName AS department_name FROM department WHERE nDepartmentID = ?", [$departmentID]);
-    // }
+    /**
+     * It gets one departments from an ID from the db
+     * @param int department ID to select
+     * @return array of departments
+     *          Or false if error
+     */
+    function getByID(int $projectID): array|false
+    {
+        return $this->executeSelect("SELECT cName AS project_name FROM project WHERE nProjectID = ?", [$projectID]);
+    }
 
     /**
      * It retrieves projects from the db based
