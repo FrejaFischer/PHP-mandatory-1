@@ -9,13 +9,20 @@ $department = new Department();
 
 if($searchText === ''){
     $departments = $department->getAll();
+
+    // check if departments were found
+    if(!$departments){
+        $errorMessage = 'There was an error, while retrieving departments';
+    }
+
 } else {
     $searchText = htmlspecialchars($searchText);
     $departments = $department->search($searchText);
-}
 
-if(!$departments){
-    $errorMessage = 'There was an error, while retrieving departments';
+    // Check if any departments matched search
+    if(count($departments) < 1) {
+        $message = 'No departments found';
+    }
 }
 
 $pageTitle = 'Departments';
@@ -38,14 +45,18 @@ include_once ROOT_PATH . '/public/nav.php';
                 </div>
             </form>
             <a href="<?=BASE_URL . '/views/department/add.php' ?>">Add department</a>
-            <section>
-                <?php foreach($departments as $department): ?>
-                    <article>
-                        <p><strong>Name: </strong><?=$department['name']?></p>
-                        <p><a href=<?=BASE_URL . "/views/department/view.php?id={$department['department_ID']}"?>>View details</a></p>
-                    </article>
-                <?php endforeach; ?>
-            </section>
+            <?php if(isset($message)):?>
+                <p><?=$message?></p>
+            <?php else:?>
+                <section>
+                    <?php foreach($departments as $department): ?>
+                        <article>
+                            <p><strong>Name: </strong><?=$department['name']?></p>
+                            <p><a href=<?=BASE_URL . "/views/department/view.php?id={$department['department_ID']}"?>>View details</a></p>
+                        </article>
+                    <?php endforeach; ?>
+                </section>
+            <?php endif;?>
         <?php endif; ?>
     </main>
   <?php include_once ROOT_PATH . '/public/footer.php';

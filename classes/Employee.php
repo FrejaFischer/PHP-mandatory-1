@@ -43,7 +43,7 @@ Class Employee extends Database
      * on a text seach on the first and last name
      * @param $pdo A PDO database connnection
      * @param $searchText The text to search for
-     * @return An associative array
+     * @return array if succes
      *         Or false is there was an error
      */
     function search(string $searchText): array|false
