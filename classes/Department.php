@@ -86,4 +86,14 @@ Class Department extends Database
 
         return $this->executeQuery("UPDATE `department` SET `cName`=(?) WHERE nDepartmentID = (?)", [$name, $departmentID]);    
     }
+    
+    /**
+     * It deletes a department in the db
+     * @param $departmentID The department to delete id
+     * @return boolean, true if success, false if error
+     */
+    function delete(int $departmentID): bool
+    {
+        return $this->executeQuery("DELETE FROM `department` WHERE nDepartmentID = (?)", [$departmentID]);    
+    }
 }

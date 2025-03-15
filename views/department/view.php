@@ -47,7 +47,7 @@ include_once ROOT_PATH . '/public/header.php';
             <p>No employees connected to this department</p>
         <?php endif;?>
         <p><a href=<?= BASE_URL . "/views/department/edit.php?id=$departmentID"?>>Edit department</a></p>
-        <p><a href=<?= BASE_URL . "/views/employee/delete.php?id=$departmentID"?>>Delete department</a></p>
+        <p><a href=<?= BASE_URL . "/views/department/delete.php?id=$departmentID"?>>Delete department</a></p>
     <?php endif; ?>
 </main>
 
