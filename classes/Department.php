@@ -71,6 +71,19 @@ Class Department extends Database
     {
         $name = htmlspecialchars(trim($department['name']));
 
-        return $this->executeInsert("INSERT INTO department (cName) VALUES (?)", [$name]);
+        return $this->executeQuery("INSERT INTO department (cName) VALUES (?)", [$name]);
+    }
+
+    /**
+     * It updates a department in the db
+     * @param $department The department to update
+     * @param $departmentID The department id
+     * @return boolean, true if success, false if error
+     */
+    function update(array $department, int $departmentID): bool
+    {
+        $name = htmlspecialchars(trim($department['name']));
+
+        return $this->executeQuery("UPDATE `department` SET `cName`=(?) WHERE nDepartmentID = (?)", [$name, $departmentID]);    
     }
 }

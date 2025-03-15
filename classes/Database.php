@@ -48,7 +48,7 @@ Class Database extends DBCredentials
      * @return bool true if succes
      *          Or false if error
      */
-     protected function executeInsert(string $sql, array $params = []): bool {
+     protected function executeQuery(string $sql, array $params = []): bool {
         try{
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute($params);
