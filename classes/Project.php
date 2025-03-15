@@ -38,41 +38,41 @@ Class Project extends Database
         return $this->executeSelect("SELECT nProjectID AS project_ID, cName AS name FROM project WHERE cName LIKE ? ORDER BY cName", ["%$searchText%"]);
     }
 
-    // /**
-    //  * Validates form from insert department
-    //  * @param array $department The department to insert
-    //  * @return array with error messages inside if error
-    //  *          or empty if there is no errors
-    //  */
-    // function validate(array $department): array
-    // {
+    /**
+     * Validates form from insert project
+     * @param array $project The department to insert
+     * @return array with error messages inside if error
+     *          or empty if there is no errors
+     */
+    function validate(array $project): array
+    {
 
-    //     $name = trim($department['name']) ?? '';
-    //     $validationErrors = [];
+        $name = trim($project['name']) ?? '';
+        $validationErrors = [];
         
-    //     if($name === '') {
-    //         $validationErrors[] = 'Department name is mandatory';
-    //     }
-    //     if(strlen($name) > 64) {
-    //         $validationErrors[] = 'Department name is too long - Maks 64 characters';
-    //     }
+        if($name === '') {
+            $validationErrors[] = 'Project name is mandatory';
+        }
+        if(strlen($name) > 128) {
+            $validationErrors[] = 'Project name is too long - Maks 128 characters';
+        }
         
     
-    //     return $validationErrors;
-    // }
+        return $validationErrors;
+    }
 
 
-    // /**
-    //  * Inserts department into the db
-    //  * @param array $department - The department to insert
-    //  * @return boolean - true if success, false if error
-    //  */
-    // function insert(array $department): bool
-    // {
-    //     $name = htmlspecialchars(trim($department['name']));
+    /**
+     * Inserts project into the db
+     * @param array $project - The project to insert
+     * @return boolean - true if success, false if error
+     */
+    function insert(array $project): bool
+    {
+        $name = htmlspecialchars(trim($project['name']));
 
-    //     return $this->executeQuery("INSERT INTO department (cName) VALUES (?)", [$name]);
-    // }
+        return $this->executeQuery("INSERT INTO project (cName) VALUES (?)", [$name]);
+    }
 
     // /**
     //  * It updates a department in the db
