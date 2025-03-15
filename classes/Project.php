@@ -53,7 +53,7 @@ Class Project extends Database
 
     /**
      * Validates form from insert project
-     * @param array $project The department to insert
+     * @param array $project The project to insert
      * @return array with error messages inside if error
      *          or empty if there is no errors
      */
@@ -87,19 +87,41 @@ Class Project extends Database
         return $this->executeQuery("INSERT INTO project (cName) VALUES (?)", [$name]);
     }
 
-    // /**
-    //  * It updates a department in the db
-    //  * @param $department The department to update
-    //  * @param $departmentID The department id
-    //  * @return boolean, true if success, false if error
-    //  */
-    // function update(array $department, int $departmentID): bool
-    // {
-    //     $name = htmlspecialchars(trim($department['name']));
+    /**
+     * It updates a projects name in the db
+     * @param $project - The updates for the project
+     * @param $projectID The project id
+     * @return boolean, true if success, false if error
+     */
+    function update(array $project, int $projectID): bool
+    {
+        $name = htmlspecialchars(trim($project['name']));
 
-    //     return $this->executeQuery("UPDATE `department` SET `cName`=(?) WHERE nDepartmentID = (?)", [$name, $departmentID]);    
-    // }
+        return $this->executeQuery("UPDATE `project` SET `cName`=(?) WHERE nProjectID = (?)", [$name, $projectID]);    
+    }
     
+    /**
+     * It remove an employee from a project in the db
+     * @param $projectID The projects id to remove from
+     * @param $employeeID The employee to remove
+     * @return boolean, true if success, false if error
+     */
+    function removeEmployee(int $projectID, int $employeeID): bool
+    {
+        return $this->executeQuery("DELETE FROM `emp_proy` WHERE nProjectID = ? AND nEmployeeID = ?", [$projectID, $employeeID]);    
+    }
+    
+    /**
+     * It adds an employee to a project in the db
+     * @param $projectID The projects id to add to
+     * @param $employeeID The employee to add
+     * @return boolean, true if success, false if error
+     */
+    function addEmployee(int $projectID, int $employeeID): bool
+    {
+        return $this->executeQuery("INSERT INTO `emp_proy`(`nEmployeeID`, `nProjectID`) VALUES (?,?)", [$employeeID, $projectID]);    
+    }
+
     /**
      * It deletes a project in the db
      * @param $projectID The project to delete id

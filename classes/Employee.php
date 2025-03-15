@@ -8,15 +8,16 @@ Class Employee extends Database
     /**
      * It retrieves all employees from the db
      * @param $pdo A PDO database connnection
-     * @return An associative array
+     * @return array associative array
      *         Or false is there was an error
      */
     function getAll(): array|false
     {
         // $pdo = $this->connect();
         $sql =<<<SQL
-            SELECT nEmployeeID, cFirstName, cLastName, dBirth
+            SELECT employee.nEmployeeID, employee.cFirstName, employee.cLastName, employee.dBirth, department.cName AS department_name
             FROM employee
+            INNER JOIN department ON department.nDepartmentID = employee.nDepartmentID
             ORDER BY cFirstName, cLastName;
         SQL;
         try{
@@ -142,8 +143,9 @@ Class Employee extends Database
      */
     function getAllByProject(int $projectID): array|false
     {
-        return $this->executeSelect("SELECT employee.cFirstName AS first_name, employee.cLastName AS last_name, employee.nEmployeeID as employee_ID FROM employee
+        return $this->executeSelect("SELECT employee.cFirstName AS first_name, employee.cLastName AS last_name, employee.nEmployeeID AS employee_ID, department.cName AS department_name FROM employee
                                     INNER JOIN emp_proy ON emp_proy.nEmployeeID  = employee.nEmployeeID
+                                    INNER JOIN department ON department.nDepartmentID = employee.nDepartmentID
                                     WHERE emp_proy.nProjectID = ?", [$projectID]);
     }
     
