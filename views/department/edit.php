@@ -8,7 +8,6 @@ if($departmentID === 0){
     exit;
 }
 
-require_once ROOT_PATH . '/classes/Employee.php';
 require_once ROOT_PATH . '/classes/Department.php';
 
 $departmentName = '';
