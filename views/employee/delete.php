@@ -38,6 +38,7 @@ if($postRequest){
 
 $pageTitle = 'Delete Employee';
 include_once ROOT_PATH . '/public/header.php';
+include_once ROOT_PATH . '/public/nav.php';
 ?>
 <main>
     <a href="view.php?id=<?=$employeeID?>">Back</a>

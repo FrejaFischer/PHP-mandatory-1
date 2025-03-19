@@ -39,6 +39,7 @@ if($postRequest){
 
 $pageTitle = 'Add Employee';
 include_once ROOT_PATH . '/public/header.php';
+include_once ROOT_PATH . '/public/nav.php';
 ?>
 <main>
     <a href="<?=BASE_URL . '/views/employee'?>">Back</a>
@@ -75,7 +76,7 @@ include_once ROOT_PATH . '/public/header.php';
             <label for="department">Department</label>
             <select name="department" id="department">
                 <?php foreach($allDepartments as $dep):?>
-                    <option value="<?=$dep['nDepartmentID']?>" <?= ($dep['nDepartmentID'] == $chosenDepartment) ? 'selected' : '' ?> ><?=$dep['cName']?></option>
+                    <option value="<?=$dep['department_ID']?>" <?= ($dep['department_ID'] == $chosenDepartment) ? 'selected' : '' ?> ><?=$dep['name']?></option>
                 <?php endforeach?>
             </select>
         </div>
