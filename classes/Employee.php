@@ -27,7 +27,7 @@ Class Employee extends Database
      */
     function search(string $searchText): array|false
     {
-        return $this->executeSelect("SELECT nEmployeeID, cFirstName, cLastName, dBirth FROM employee WHERE cFirstName LIKE ? OR cLastName LIKE ? ORDER BY cFirstName, cLastName;", ["%$searchText%", "%$searchText%"]);
+        return $this->executeSelect("SELECT nEmployeeID AS employee_ID, cFirstName AS name, cLastName AS lastName, dBirth AS birth FROM employee WHERE cFirstName LIKE ? OR cLastName LIKE ? ORDER BY cFirstName, cLastName;", ["%$searchText%", "%$searchText%"]);
     }
     
     /**

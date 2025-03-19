@@ -43,7 +43,7 @@ foreach($employeesInProject as $employeeInProject) {
 }
 // Filter out employees whose ID is in $idsToRemove
 $filteredEmployees = array_filter($allEmployees, function ($employee) use ($idsToRemove) {
-    return !in_array($employee['nEmployeeID'], $idsToRemove);
+    return !in_array($employee['employee_ID'], $idsToRemove);
 });
 
 $postRequest = $_SERVER['REQUEST_METHOD'] === 'POST';
@@ -152,7 +152,7 @@ include_once ROOT_PATH . '/public/nav.php';
         <p>Employees:</p>
         <select name="new_employee" id="employee">
                 <?php foreach($filteredEmployees as $em):?>
-                    <option value="<?=$em['nEmployeeID']?>"><?=$em['cLastName'] . ', ' . $em['cFirstName'] . ' (' . $em['department_name'] . ')'?></option>
+                    <option value="<?=$em['employee_ID']?>"><?=$em['lastName'] . ', ' . $em['name'] . ' (' . $em['department_name'] . ')'?></option>
                 <?php endforeach?>
             </select>
         <button type="submit" name="add_employee">Add</button>
