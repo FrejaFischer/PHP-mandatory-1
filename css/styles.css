@@ -24,3 +24,10 @@ li {
 .flex {
   display: flex;
 }
+
+.primary_btn {
+  background-color: aqua;
+}
+.primary_btn:hover {
+  background-color: rgb(4, 172, 172);
+}

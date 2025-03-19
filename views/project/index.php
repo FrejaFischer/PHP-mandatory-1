@@ -3,11 +3,17 @@ require_once '../../initialise.php';
 
 require_once ROOT_PATH . '/classes/Project.php';
 
-$searchText = trim($_GET['search'] ?? '');
+if($_SERVER['REQUEST_METHOD'] === 'GET') {
+    if(isset($_GET['searchBtn'])) {
+        $searchText = trim($_GET['search'] ?? '');
+    } else {
+        $searchText = '';
+    }
+}
 
 $project = new Project();
 
-if($searchText === ''){
+if(!isset($searchText)){
     $projects = $project->getAll();
 
     // check if projects were found
@@ -41,7 +47,8 @@ include_once ROOT_PATH . '/public/nav.php';
                     <input type="search" id="txtSearch" name="search">
                 </div>
                 <div>
-                    <button type="submit">Search</button>
+                    <button type="submit"  name="searchBtn" class="primary_btn">Search</button>
+                    <button type="submit"  name="resetBtn">Reset</button>
                 </div>
             </form>
             <a href="<?=BASE_URL . '/views/project/add.php' ?>">Add Project</a>
