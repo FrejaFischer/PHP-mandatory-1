@@ -7,73 +7,27 @@ Class Employee extends Database
 {
     /**
      * It retrieves all employees from the db
-     * @param $pdo A PDO database connnection
      * @return array associative array
      *         Or false is there was an error
      */
     function getAll(): array|false
     {
-        // $pdo = $this->connect();
-        $sql =<<<SQL
-            SELECT employee.nEmployeeID, employee.cFirstName, employee.cLastName, employee.dBirth, department.cName AS department_name
+        return $this->executeSelect("SELECT employee.nEmployeeID AS employee_ID, employee.cFirstName AS name, employee.cLastName AS lastName, employee.dBirth AS birth, department.cName AS department_name
             FROM employee
             INNER JOIN department ON department.nDepartmentID = employee.nDepartmentID
-            ORDER BY cFirstName, cLastName;
-        SQL;
-        try{
-            $stmt = $this->pdo->prepare($sql);
-            // $stmt = $pdo->prepare($sql);
-            $stmt->execute();
-            
-            return $stmt->fetchAll();
-        } catch(PDOException $e){
-            //echo "Database Connection Failed: " . $e->getMessage();
-            Logger::logText('Error getting all employee', $e);
-            return false;
-        } catch(Exception $e){
-            echo "An error occurred: " . $e->getMessage();
-            return [];
-        } catch(Error $e){
-            echo "A serious system error occurred: " . $e->getMessage();
-            return [];
-        }
+            ORDER BY cFirstName, cLastName;");
     }
     
     /**
      * It retrieves employee from the db based
      * on a text seach on the first and last name
-     * @param $pdo A PDO database connnection
      * @param $searchText The text to search for
      * @return array if succes
      *         Or false is there was an error
      */
     function search(string $searchText): array|false
     {
-        // $pdo = $this->connect();
-        $sql =<<<SQL
-            SELECT nEmployeeID, cFirstName, cLastName, dBirth
-            FROM employee
-            WHERE cFirstName LIKE ?
-            OR cLastName LIKE ?
-            ORDER BY cFirstName, cLastName;
-        SQL;
-        
-        try{
-            $stmt = $this->pdo->prepare($sql);
-            // $stmt = $pdo->prepare($sql);
-            $stmt->execute(["%$searchText%", "%$searchText%"]);
-            
-            return $stmt->fetchAll();
-        } catch(PDOException $e){
-            Logger::logText('Error getting all employee', $e);
-            return false;
-        } catch(Exception $e){
-            echo "An error occurred: " . $e->getMessage();
-            return [];
-        } catch(Error $e){
-            echo "A serious system error occurred: " . $e->getMessage();
-            return [];
-        }
+        return $this->executeSelect("SELECT nEmployeeID, cFirstName, cLastName, dBirth FROM employee WHERE cFirstName LIKE ? OR cLastName LIKE ? ORDER BY cFirstName, cLastName;", ["%$searchText%", "%$searchText%"]);
     }
     
     /**
@@ -85,9 +39,21 @@ Class Employee extends Database
      */
     function getByID(int $employeeID): array|false
     {
-        // $pdo = $this->connect();
-        $sql =<<<SQL
-            SELECT 
+        // $sql =<<<SQL
+        //     SELECT 
+        //         employee.cFirstName AS first_name, 
+        //         employee.cLastName AS last_name, 
+        //         employee.cEmail AS email, 
+        //         employee.dBirth AS birth_date, 
+        //         employee.nDepartmentID AS department_id, 
+        //         department.cName AS department_name,
+        //         department.nDepartmentID AS department_ID
+        //     FROM employee INNER JOIN department
+        //         ON employee.nDepartmentID = department.nDepartmentID
+        //     WHERE nEmployeeID = :employeeID;
+        // SQL;
+
+        return $this->executeSelect("SELECT 
                 employee.cFirstName AS first_name, 
                 employee.cLastName AS last_name, 
                 employee.cEmail AS email, 
@@ -97,29 +63,28 @@ Class Employee extends Database
                 department.nDepartmentID AS department_ID
             FROM employee INNER JOIN department
                 ON employee.nDepartmentID = department.nDepartmentID
-            WHERE nEmployeeID = :employeeID;
-        SQL;
+            WHERE nEmployeeID = ?;", [$employeeID]);
         
-        try{
-            $stmt = $this->pdo->prepare($sql);
-            // $stmt = $pdo->prepare($sql);
+        // try{
+        //     $stmt = $this->pdo->prepare($sql);
+        //     // $stmt = $pdo->prepare($sql);
             
-            $stmt->bindValue(':employeeID', $employeeID);
-            $stmt->execute();
+        //     $stmt->bindValue(':employeeID', $employeeID);
+        //     $stmt->execute();
             
-            return $stmt->fetchAll();
-        } catch(PDOException $e){
-            Logger::logText('Error getting all employee', $e);
-            return false;
-        } catch(Exception $e){
-            Logger::logText('Error getting all employee', $e);
-            echo "An error occurred: " . $e->getMessage();
-            return false;
-        } catch(Error $e){
-            Logger::logText('Error getting all employee', $e);
-            echo "A serious system error occurred: " . $e->getMessage();
-            return false;
-        }
+        //     return $stmt->fetchAll();
+        // } catch(PDOException $e){
+        //     Logger::logText('Error getting all employee', $e);
+        //     return false;
+        // } catch(Exception $e){
+        //     Logger::logText('Error getting all employee', $e);
+        //     echo "An error occurred: " . $e->getMessage();
+        //     return false;
+        // } catch(Error $e){
+        //     Logger::logText('Error getting all employee', $e);
+        //     echo "A serious system error occurred: " . $e->getMessage();
+        //     return false;
+        // }
     }
 
     /**

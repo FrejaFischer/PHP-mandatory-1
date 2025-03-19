@@ -49,10 +49,10 @@ include_once ROOT_PATH . '/public/nav.php';
                 <section>
                     <?php foreach($employees as $employee): ?>
                         <article>
-                            <p><strong>First name: </strong><?=$employee['cFirstName']?></p>
-                            <p><strong>Last name: </strong><?=$employee['cLastName']?></p>
-                            <p><strong>Birth date: </strong><?=$employee['dBirth']?></p>
-                            <p><a href=<?=BASE_URL . "/views/employee/view.php?id={$employee['nEmployeeID']}"?>>View details</a></p>
+                            <p><strong>First name: </strong><?=$employee['name']?></p>
+                            <p><strong>Last name: </strong><?=$employee['lastName']?></p>
+                            <p><strong>Birth date: </strong><?=$employee['birth']?></p>
+                            <p><a href=<?=BASE_URL . "/views/employee/view.php?id={$employee['employee_ID']}"?>>View details</a></p>
                         </article>
                     <?php endforeach; ?>
                 </section>
