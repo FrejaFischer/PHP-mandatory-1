@@ -40,7 +40,7 @@ $pageTitle = 'Delete Employee';
 include_once ROOT_PATH . '/public/header.php';
 ?>
 <main>
-    <a href="view.php?id=<?=$employeeID?>">Back</a>
+    <a href="view.php?id=<?=$employeeID?>">&ShortLeftArrow; Back</a>
     <?php if (isset($errorMessage)): ?>
         <section>
             <p class="error"><?=$errorMessage?></p>

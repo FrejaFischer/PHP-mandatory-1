@@ -41,7 +41,7 @@ $pageTitle = 'Delete Project';
 include_once ROOT_PATH . '/public/header.php';
 ?>
 <main>
-    <a href="view.php?id=<?=$projectID?>">Back</a>
+    <a href="view.php?id=<?=$projectID?>">&ShortLeftArrow; Back</a>
     <?php if (isset($errorMessage)): ?>
         <section>
             <p class="error"><?=$errorMessage?></p>

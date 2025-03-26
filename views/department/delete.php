@@ -51,7 +51,7 @@ $pageTitle = 'Delete Department';
 include_once ROOT_PATH . '/public/header.php';
 ?>
 <main>
-    <a href="view.php?id=<?=$departmentID?>">Back</a>
+    <a href="view.php?id=<?=$departmentID?>">&ShortLeftArrow; Back</a>
     <?php if (isset($errorMessage)): ?>
         <section>
             <p class="error"><?=$errorMessage?></p>

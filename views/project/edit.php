@@ -105,7 +105,7 @@ $pageTitle = 'Edit Project';
 include_once ROOT_PATH . '/public/header.php';
 ?>
 <main>
-    <a href=<?= BASE_URL . "/views/project/view.php?id=$projectID"?>>Back</a>
+    <a href=<?= BASE_URL . "/views/project/view.php?id=$projectID"?>>&ShortLeftArrow; Back</a>
     <?php if(isset($errorMessage)):?>
             <section>
                 <p class="error"><?=$errorMessage?></p>

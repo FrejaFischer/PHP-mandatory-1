@@ -29,7 +29,7 @@ $pageTitle = 'Department';
 include_once ROOT_PATH . '/public/header.php';
 ?>
 <main>
-    <a href="<?=BASE_URL . '/views/department'?>">Back</a>
+    <a href="<?=BASE_URL . '/views/department'?>">&ShortLeftArrow; Back</a>
     <?php if (isset($errorMessage)): ?>
         <section>
             <p class="error"><?=$errorMessage?></p>
