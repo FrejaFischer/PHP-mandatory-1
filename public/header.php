@@ -6,7 +6,7 @@
     <title><?=$pageTitle ?></title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
     <link rel="stylesheet" href=<?=BASE_URL . '/css/styles.css' ?>>
-    <link rel="stylesheet" href=<?=BASE_URL . '/css/nav.css' ?>>
+    <link rel="stylesheet" href=<?=BASE_URL . '/css/header.css' ?>>
 </head>
 <body>
     <header>

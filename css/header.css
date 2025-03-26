@@ -1,0 +1,52 @@
+header {
+  display: grid;
+  gap: var(--size-5);
+  margin-bottom: var(--size-5);
+
+  h1 {
+    margin: 0;
+    text-align: center;
+  }
+
+  nav {
+    padding: var(--size-4);
+    border: var(--size-0-5) solid var(--colorSecondary);
+    border-radius: var(--size-4);
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--size-5);
+      padding: 0;
+      margin: 0;
+
+      li {
+        .current {
+          color: var(--colorBlack);
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 675px) {
+  header {
+    display: grid;
+    grid-template-columns: auto 60%;
+    gap: var(--size-4);
+    align-items: center;
+
+    h1 {
+      text-align: start;
+    }
+
+    nav {
+      ul {
+        flex-direction: row;
+      }
+    }
+  }
+}
