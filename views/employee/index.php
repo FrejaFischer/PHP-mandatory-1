@@ -32,7 +32,6 @@ if(!isset($searchText)){
 
 $pageTitle = 'Employees';
 include_once ROOT_PATH . '/public/header.php';
-include_once ROOT_PATH . '/public/nav.php';
 ?>
     <main>
         <?php if(isset($errorMessage)):?>

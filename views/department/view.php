@@ -27,7 +27,6 @@ $employees = $employee->getAllByDepartment($departmentID);
 
 $pageTitle = 'Department';
 include_once ROOT_PATH . '/public/header.php';
-include_once ROOT_PATH . '/public/nav.php';
 ?>
 <main>
     <a href="<?=BASE_URL . '/views/department'?>">Back</a>

@@ -39,7 +39,6 @@ if($postRequest){
 
 $pageTitle = 'Delete Project';
 include_once ROOT_PATH . '/public/header.php';
-include_once ROOT_PATH . '/public/nav.php';
 ?>
 <main>
     <a href="view.php?id=<?=$projectID?>">Back</a>
