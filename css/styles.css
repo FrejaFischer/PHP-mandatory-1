@@ -8,14 +8,19 @@
   background-color: var(--BtnPrimaryHover);
 }
 
-article {
-  margin-bottom: 1rem;
-  padding: 1rem;
-  border: thin solid var(--colorSecondary);
-  border-radius: 1rem;
+section {
+  margin: var(--size-5) 0;
 
-  p {
-    margin: 0;
+  article {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border: var(--size-0-5) solid var(--colorSecondary);
+    box-shadow: var(--size-1) var(--size-1) var(--colorPrimary);
+    border-radius: 1rem;
+
+    p {
+      margin: 0;
+    }
   }
 }
 

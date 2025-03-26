@@ -42,7 +42,7 @@ include_once ROOT_PATH . '/public/header.php';
         <?php else:?>
             <form action="index.php" method="GET" class="searchForm">
                 <div>
-                    <label for="txtSearch">Search</label>
+                    <label for="txtSearch">Search for departments</label>
                     <input type="search" id="txtSearch" name="search">
                 </div>
                 <div>

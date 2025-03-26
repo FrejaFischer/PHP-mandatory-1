@@ -10,8 +10,6 @@ header {
 
   nav {
     padding: var(--size-4);
-    border: var(--size-0-5) solid var(--colorSecondary);
-    border-radius: var(--size-4);
 
     ul {
       display: flex;
@@ -24,7 +22,7 @@ header {
 
       li {
         .current {
-          color: var(--colorBlack);
+          color: var(--colorSecondary);
           text-decoration: underline;
         }
       }
