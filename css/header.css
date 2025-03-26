@@ -8,14 +8,16 @@ header {
   }
 
   nav {
-    padding: var(--size-4);
+    padding: var(--size-3);
+    border: var(--size-1) solid var(--colorSecondary);
+    border-radius: var(--size-4);
 
     ul {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
-      gap: var(--size-5);
+      gap: var(--size-1);
       padding: 0;
       margin: 0;
 
@@ -42,6 +44,7 @@ header {
     }
 
     nav {
+      border: none;
       ul {
         flex-direction: row;
       }

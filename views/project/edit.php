@@ -116,16 +116,16 @@ include_once ROOT_PATH . '/public/header.php';
                     <p>Project updated succesfully!</p>
                 </section>
     <?php else: ?>
-    <form action="edit.php?id=<?=$projectID?>" method="POST">
+    <form action="edit.php?id=<?=$projectID?>" method="POST" class="editForm">
         <div>
             <label for="txtProjectName">Project name</label>
             <input type="text" id="txtProjectName" name="name" value="<?= $projectName ?>" required>
         </div>
         <div>
-            <button type="submit" name="update_project">Update project name</button>
+            <button type="submit" name="update_project" class="primary_btn">Update project name</button>
         </div>
     </form>
-    <form action="edit.php?id=<?=$projectID?>" method="POST">
+    <form action="edit.php?id=<?=$projectID?>" method="POST" class="editForm">
         <p>Employees:</p>
         <?php if(count($employeesInProject) < 1):?>
             <p>No employees connected to project</p>
@@ -146,15 +146,14 @@ include_once ROOT_PATH . '/public/header.php';
         <?php endif;?>
     </form>
 
-    <form action="edit.php?id=<?=$projectID?>" method="POST">
+    <form action="edit.php?id=<?=$projectID?>" method="POST" class="editForm">
         <p>Add employees:</p>
-        <p>Employees:</p>
         <select name="new_employee" id="employee">
                 <?php foreach($filteredEmployees as $em):?>
                     <option value="<?=$em['employee_ID']?>"><?=$em['lastName'] . ', ' . $em['name'] . ' (' . $em['department_name'] . ')'?></option>
                 <?php endforeach?>
             </select>
-        <button type="submit" name="add_employee">Add</button>
+        <button type="submit" name="add_employee" class="primary_btn">Add</button>
     </form>
     <?php endif; ?>
 </main>

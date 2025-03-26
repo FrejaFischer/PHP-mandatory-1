@@ -65,13 +65,13 @@ include_once ROOT_PATH . '/public/header.php';
                     <p>Department updated succesfully!</p>
                 </section>
     <?php else: ?>
-    <form action="edit.php?id=<?=$departmentID?>" method="POST">
+    <form action="edit.php?id=<?=$departmentID?>" method="POST" class="editForm">
         <div>
             <label for="txtDepartmentName">Department name</label>
             <input type="text" id="txtDepartmentName" name="name" value="<?= $departmentName ?>" required>
         </div>
         <div>
-            <button type="submit">Update department</button>
+            <button type="submit" class="primary_btn">Update department</button>
         </div>
     </form>
     <?php endif; ?>

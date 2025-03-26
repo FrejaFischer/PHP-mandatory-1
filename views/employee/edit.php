@@ -83,7 +83,7 @@ include_once ROOT_PATH . '/public/header.php';
                     <p>Employee updated succesfully!</p>
                 </section>
     <?php else: ?>
-    <form action="edit.php?id=<?=$employeeID?>" method="POST">
+    <form action="edit.php?id=<?=$employeeID?>" method="POST" class="editForm">
         <div>
             <label for="txtFirstName">First Name</label>
             <input type="text" id="txtFirstName" name="firstName" value="<?= $firstName ?>">
@@ -109,7 +109,7 @@ include_once ROOT_PATH . '/public/header.php';
             </select>
         </div>
         <div>
-            <button type="submit">Update employee</button>
+            <button type="submit" class="primary_btn">Update employee</button>
         </div>
     </form>
     <?php endif; ?>
