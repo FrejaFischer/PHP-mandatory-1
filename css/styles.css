@@ -45,6 +45,13 @@ section {
   }
 }
 
+.addForm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--size-4);
+  margin-top: var(--size-5);
+}
+
 .error {
   padding: 1rem;
   border: thick solid var(--colorError);

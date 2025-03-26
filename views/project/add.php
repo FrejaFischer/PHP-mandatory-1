@@ -40,13 +40,13 @@ include_once ROOT_PATH . '/public/header.php';
                 </section>
     <?php endif; ?>
 
-    <form action="add.php" method="POST">
+    <form action="add.php" method="POST" class="addForm">
         <div>
             <label for="txtName">Project Name</label>
             <input type="text" id="txtName" name="name" maxlength="128" value="<?= isset($errorMessage) ? $projectName : '' ?>" required >
         </div>
         <div>
-            <button type="submit">Add project</button>
+            <button type="submit" class="primary_btn">Add project</button>
         </div>
     </form>
 </main>

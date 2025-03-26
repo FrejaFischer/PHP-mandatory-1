@@ -54,7 +54,7 @@ include_once ROOT_PATH . '/public/header.php';
                 </section>
     <?php endif; ?>
 
-    <form action="add.php" method="POST">
+    <form action="add.php" method="POST" class="addForm">
         <div>
             <label for="txtFirstName">First Name</label>
             <input type="text" id="txtFirstName" name="firstName" value="<?= isset($errorMessage) ? $firstName : '' ?>">
@@ -80,7 +80,7 @@ include_once ROOT_PATH . '/public/header.php';
             </select>
         </div>
         <div>
-            <button type="submit">Add employee</button>
+            <button type="submit" class="primary_btn">Add employee</button>
         </div>
     </form>
 </main>

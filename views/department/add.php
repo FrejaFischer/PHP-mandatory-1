@@ -27,7 +27,7 @@ $pageTitle = 'Add Department';
 include_once ROOT_PATH . '/public/header.php';
 ?>
 <main>
-    <a href="<?=BASE_URL . '/views/department'?>">Back</a>
+    <a href="<?=BASE_URL . '/views/department'?>">&ShortLeftArrow; Back</a>
     <?php if(isset($errorMessage)):?>
             <section>
                 <p class="error"><?=$errorMessage?></p>
@@ -40,13 +40,13 @@ include_once ROOT_PATH . '/public/header.php';
                 </section>
     <?php endif; ?>
 
-    <form action="add.php" method="POST">
+    <form action="add.php" method="POST" class="addForm">
         <div>
             <label for="txtName">Department Name</label>
             <input type="text" id="txtName" name="name" maxlength="64" value="<?= isset($errorMessage) ? $departmentName : '' ?>" required >
         </div>
         <div>
-            <button type="submit">Add department</button>
+            <button type="submit" class="primary_btn">Add department</button>
         </div>
     </form>
 </main>
