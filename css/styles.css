@@ -51,7 +51,8 @@ section {
 }
 
 .addForm,
-.editForm {
+.editForm,
+.deleteForm {
   display: flex;
   flex-direction: column;
   gap: var(--size-4);

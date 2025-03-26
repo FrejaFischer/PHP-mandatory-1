@@ -45,20 +45,19 @@ include_once ROOT_PATH . '/public/header.php';
         <section>
             <p class="error"><?=$errorMessage?></p>
         </section>
-    <?php else: ?>
-        <p><strong>First name: </strong><?=$employeeToDelete['first_name'] ?></p>
-        <p><strong>Last name: </strong><?=$employeeToDelete['last_name'] ?></p>
-        <p><strong>Email: </strong><?=$employeeToDelete['email'] ?></p>
-        <p><strong>Birth date: </strong><?=$employeeToDelete['birth_date'] ?></p>
-        <p><strong>Department: </strong><?=$employeeToDelete['department_name'] ?></p>
-        <form action="delete.php?id=<?=$employeeID?>" method="POST">
-            <div>
-                <label for="confirm_dlt">Confirm you want to delete this employee</label>
-                <input type="checkbox" id="confirm_dlt" name="checkConfirm" value="confirmed" required/>
-            </div>
-            <button type="submit">Delete permenently</button>
-        </form>
     <?php endif; ?>
+    <p><strong>First name: </strong><?=$employeeToDelete['first_name'] ?></p>
+    <p><strong>Last name: </strong><?=$employeeToDelete['last_name'] ?></p>
+    <p><strong>Email: </strong><?=$employeeToDelete['email'] ?></p>
+    <p><strong>Birth date: </strong><?=$employeeToDelete['birth_date'] ?></p>
+    <p><strong>Department: </strong><?=$employeeToDelete['department_name'] ?></p>
+    <form action="delete.php?id=<?=$employeeID?>" method="POST" class="deleteForm">
+        <div>
+            <label for="confirm_dlt">Confirm you want to delete this employee</label>
+            <input type="checkbox" id="confirm_dlt" name="checkConfirm" value="confirmed" required/>
+        </div>
+        <button type="submit" class="primary_btn">Delete permenently</button>
+    </form>
 </main>
 
 <?php include_once ROOT_PATH . '/public/footer.php'; ?>

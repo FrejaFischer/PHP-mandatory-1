@@ -58,12 +58,12 @@ include_once ROOT_PATH . '/public/header.php';
         </section>
     <?php else: ?>
         <p><strong>Name: </strong><?=$departmentToDelete['department_name'] ?></p>
-        <form action="delete.php?id=<?=$departmentID?>" method="POST">
+        <form action="delete.php?id=<?=$departmentID?>" method="POST" class="deleteForm">
             <div>
                 <label for="confirm_dlt">Confirm you want to delete this department</label>
                 <input type="checkbox" id="confirm_dlt" name="checkConfirm" value="confirmed" required/>
             </div>
-            <button type="submit">Delete permenently</button>
+            <button type="submit" class="primary_btn">Delete permenently</button>
         </form>
     <?php endif; ?>
 </main>
