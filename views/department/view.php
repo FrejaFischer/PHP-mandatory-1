@@ -36,7 +36,7 @@ include_once ROOT_PATH . '/public/header.php';
         </section>
     <?php else: ?>
         <p><strong>Name: </strong><?=$department['department_name'] ?></p>
-        <h2>Employees</h2>
+        <p><strong>Employees:</strong></p>
         <?php if($employees):?>
             <ul>
                 <?php foreach ($employees as $employee):?>
@@ -46,8 +46,11 @@ include_once ROOT_PATH . '/public/header.php';
         <?php else:?>
             <p>No employees connected to this department</p>
         <?php endif;?>
-        <p><a href=<?= BASE_URL . "/views/department/edit.php?id=$departmentID"?>>Edit department</a></p>
-        <p><a href=<?= BASE_URL . "/views/department/delete.php?id=$departmentID"?>>Delete department</a></p>
+        <div class="line"></div>
+        <div class="flex">
+            <p><a href=<?= BASE_URL . "/views/department/edit.php?id=$departmentID"?>>Edit department</a></p>
+            <p><a href=<?= BASE_URL . "/views/department/delete.php?id=$departmentID"?>>Delete department</a></p>
+        </div>
     <?php endif; ?>
 </main>
 

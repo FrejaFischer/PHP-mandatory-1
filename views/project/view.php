@@ -36,7 +36,7 @@ include_once ROOT_PATH . '/public/header.php';
         </section>
     <?php else: ?>
         <p><strong>Name: </strong><?=$project['project_name'] ?></p>
-        <h2>Employees</h2>
+        <p><strong>Employees:</strong></p>
         <?php if($employees):?>
             <ul>
                 <?php foreach ($employees as $employee):?>
@@ -46,8 +46,11 @@ include_once ROOT_PATH . '/public/header.php';
         <?php else:?>
             <p>No employees connected to this project</p>
         <?php endif;?>
-        <p><a href=<?= BASE_URL . "/views/project/edit.php?id=$projectID"?>>Edit project</a></p>
-        <p><a href=<?= BASE_URL . "/views/project/delete.php?id=$projectID"?>>Delete project</a></p>
+        <div class="line"></div>
+        <div class="flex">
+            <p><a href=<?= BASE_URL . "/views/project/edit.php?id=$projectID"?>>Edit project</a></p>
+            <p><a href=<?= BASE_URL . "/views/project/delete.php?id=$projectID"?>>Delete project</a></p>
+        </div>
     <?php endif; ?>
 </main>
 

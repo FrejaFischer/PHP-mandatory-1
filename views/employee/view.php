@@ -50,8 +50,11 @@ include_once ROOT_PATH . '/public/header.php';
                 <?php endforeach;?>
             </ul>
         <?php endif;?>
-        <p><a href=<?= BASE_URL . "/views/employee/edit.php?id=$employeeID"?>>Edit employee</a></p>
-        <p><a href=<?= BASE_URL . "/views/employee/delete.php?id=$employeeID"?>>Delete employee</a></p>
+        <div class="line"></div>
+        <div class="flex">
+            <p><a href=<?= BASE_URL . "/views/employee/edit.php?id=$employeeID"?>>Edit employee</a></p>
+            <p><a href=<?= BASE_URL . "/views/employee/delete.php?id=$employeeID"?>>Delete employee</a></p>
+        </div>
     <?php endif; ?>
 </main>
 
