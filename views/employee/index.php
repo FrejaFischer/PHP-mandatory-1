@@ -39,7 +39,7 @@ include_once ROOT_PATH . '/public/header.php';
                 <p class="error"><?=$errorMessage?></p>
             </section>
         <?php else:?>
-            <form action="index.php" method="GET">
+            <form action="index.php" method="GET" class="searchForm">
                 <div>
                     <label for="txtSearch">Search</label>
                     <input type="search" id="txtSearch" name="search">

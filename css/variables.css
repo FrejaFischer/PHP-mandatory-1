@@ -7,7 +7,7 @@
   --colorWhite: white;
   --colorError: red;
 
-  --BtnPrimaryHover: rgb(12, 90, 116);
+  --BtnPrimaryHover: var(--colorSecondary);
 
   /* SIZES  REM*/
   --size-0-5: 0.125rem; /* 2px */
