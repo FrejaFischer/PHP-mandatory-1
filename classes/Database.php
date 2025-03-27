@@ -42,7 +42,7 @@ Class Database extends DBCredentials
     }
     
     /**
-     * Execute INSERT SQL query in the db
+     * Execute INSERT, UPDATE or DELETE SQL query in the db
      * @param string $sql SQL query
      * @param array $params Query parameter
      * @return bool true if succes
