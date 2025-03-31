@@ -43,7 +43,7 @@ include_once ROOT_PATH . '/public/header.php';
             <form action="index.php" method="GET" class="searchForm">
                 <div>
                     <label for="txtSearch">Search for projects</label>
-                    <input type="search" id="txtSearch" name="search">
+                    <input type="search" id="txtSearch" name="search" value=<?=$searchText ? $searchText : ""?>>
                 </div>
                 <div>
                     <button type="submit"  name="searchBtn" class="primary_btn">Search</button>
