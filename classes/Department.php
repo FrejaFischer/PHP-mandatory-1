@@ -5,6 +5,7 @@ require_once 'Logger.php';
 
 Class Department extends Database
 {
+    public const MAX_NAME_LENGTH = 64;
     /**
      * It gets all departments from the db
      * @return array of departments
