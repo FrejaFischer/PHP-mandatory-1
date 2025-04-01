@@ -1,6 +1,6 @@
 <?php
 
-Class DBCredentials
+abstract Class DBCredentials
 {
     protected string $host = 'localhost';
     protected string $dbname = 'company';
