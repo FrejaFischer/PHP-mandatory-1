@@ -23,4 +23,6 @@ $baseUrl = str_replace($documentRoot, '', ROOT_PATH);
 
 // As it is an absolute path, it must start with a slash.
 // If it already starts with a slash, ltrim removes it before it gets added again
-define('BASE_URL', '/' . ltrim($baseUrl, '/'));
+
+define('BASE_URL', '/' . ltrim($baseUrl, '/')); // development
+//define('BASE_URL', 'http://fischerphpmandatory.infinityfreeapp.com'); // production

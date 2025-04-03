@@ -8,6 +8,7 @@ Class Database extends DBCredentials
 
     public function __construct()
     {
+        parent::__construct(); // Call parent constructor to load env variables
         $dsn = "mysql:host={$this->host};port={$this->port};dbname={$this->dbname};charset=utf8mb4";
         $options = [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
