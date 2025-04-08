@@ -54,8 +54,8 @@ Class Department extends Database
         if($name === '') {
             $validationErrors[] = 'Department name is mandatory';
         }
-        if(strlen($name) > 64) {
-            $validationErrors[] = 'Department name is too long - Maks 64 characters';
+        if(strlen($name) > self::MAX_NAME_LENGTH) {
+            $validationErrors[] = 'Department name is too long - Maks ' . self::MAX_NAME_LENGTH . ' characters';
         }
         
     
@@ -85,7 +85,7 @@ Class Department extends Database
     {
         $name = htmlspecialchars(trim($department['name']));
 
-        return $this->executeQuery("UPDATE `department` SET `cName`=(?) WHERE nDepartmentID = (?)", [$name, $departmentID]);    
+        return $this->executeQuery("UPDATE department SET cName=(?) WHERE nDepartmentID = (?)", [$name, $departmentID]);    
     }
     
     /**
@@ -95,6 +95,6 @@ Class Department extends Database
      */
     function delete(int $departmentID): bool
     {
-        return $this->executeQuery("DELETE FROM `department` WHERE nDepartmentID = (?)", [$departmentID]);    
+        return $this->executeQuery("DELETE FROM department WHERE nDepartmentID = (?)", [$departmentID]);    
     }
 }

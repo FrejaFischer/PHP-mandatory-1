@@ -5,6 +5,8 @@ require_once ROOT_PATH . '/classes/Logger.php';
 
 Class Employee extends Database
 {
+    public const MAX_AGE = 16;
+
     /**
      * It retrieves all employees from the db
      * @return array associative array
@@ -12,10 +14,18 @@ Class Employee extends Database
      */
     function getAll(): array|false
     {
-        return $this->executeSelect("SELECT employee.nEmployeeID AS employee_ID, employee.cFirstName AS name, employee.cLastName AS lastName, employee.dBirth AS birth, department.cName AS department_name
-            FROM employee
-            INNER JOIN department ON department.nDepartmentID = employee.nDepartmentID
-            ORDER BY cFirstName, cLastName;");
+        $sql = <<<SQL
+        SELECT employee.nEmployeeID AS employee_ID, 
+        employee.cFirstName AS name, 
+        employee.cLastName AS lastName, 
+        employee.dBirth AS birth, 
+        department.cName AS department_name
+        FROM employee
+        INNER JOIN department ON department.nDepartmentID = employee.nDepartmentID
+        ORDER BY employee.cFirstName, employee.cLastName;
+        SQL;
+
+        return $this->executeSelect($sql);
     }
     
     /**
@@ -122,8 +132,8 @@ Class Employee extends Database
             $age = $today->diff($birthDay)->y; // finds the age of user in years (y)
             
             // check if age is too young
-            if($age < 16) {
-                $validationErrors[] = 'Employee must be at least 16 years old';
+            if($age < self::MAX_AGE) {
+                $validationErrors[] = 'Employee must be at least ' . self::MAX_AGE . ' years old';
             }
         }
     
