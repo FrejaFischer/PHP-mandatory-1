@@ -1,20 +1,7 @@
 <?php
-   
-function getEnvVariable($key) {
-    if (!file_exists(ROOT_PATH . '/.env')) {
-        return null;
-    }
-    
-    $lines = file(ROOT_PATH . '/.env', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-    foreach ($lines as $line) {
-        list($envKey, $envValue) = explode('=', $line, 2);
-        if (trim($envKey) === $key) {
-            return trim($envValue);
-        }
-    }
-    return null;
-}
-abstract Class DBCredentials
+
+require_once 'Utils.php';
+abstract Class DBCredentials extends Utils
 {
     protected string $host;
     protected string $dbname;
@@ -24,11 +11,11 @@ abstract Class DBCredentials
 
     public function __construct()
     {
-        $this->host = getEnvVariable('DB_HOST');
-        $this->dbname = getEnvVariable("DB_NAME");
-        $this->user = getEnvVariable("DB_USER");
-        $this->password = getEnvVariable("DB_PASS");
-        $this->port = getEnvVariable("DB_PORT");
+        $this->host = Utils::getEnvVariable('DB_HOST');
+        $this->dbname = Utils::getEnvVariable("DB_NAME");
+        $this->user = Utils::getEnvVariable("DB_USER");
+        $this->password = Utils::getEnvVariable("DB_PASS");
+        $this->port = Utils::getEnvVariable("DB_PORT");
     }
     
 }
